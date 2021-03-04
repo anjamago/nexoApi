@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nexos.Entities\Nexos.Entities.csproj" />
+    <ProjectReference Include="..\Nexos.Repositories\Nexos.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>
