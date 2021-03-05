@@ -78,10 +78,22 @@ namespace Nexos.BusinessRules
             return new ResponseBase<Libro>(message: "Solicitud Ok", data: editorial, count: 1);
         }
 
-        public async  Task<ResponseBase<List<Libro>>> GetAll()
+        public async  Task<ResponseBase<List<LibroDTO>>> GetAll()
         {
-            var all = await LibroRepo.GetAllAsync();
-            return new ResponseBase<List<Libro>>(message: "Solicitud Ok", data: all.ToList(), count: all.Count());
+            var all = await LibroRepo.GetAllAsync(include:i=>i.Include(inc=>inc.IdAutorNavigation).Include(inc=>inc.IdEditorialNavigation));
+            List<LibroDTO> libros = new List<LibroDTO>();
+
+            all.ToList().ForEach(f => libros.Add(new LibroDTO { 
+                Titulo = f.Titulo,
+                Generon = f.Generon,
+                Anno = f.Anno,
+                NumeroPagina = f.NumeroPagina??0,
+                Autor = f.IdAutorNavigation.NombreCompleto,
+                Editorial = f.IdEditorialNavigation.Nombre
+
+            }));
+
+            return new ResponseBase<List<LibroDTO>>(message: "Solicitud Ok", data: libros, count: all.Count());
         }
 
         public async Task<ResponseBase<Libro>> GetFind(int id)

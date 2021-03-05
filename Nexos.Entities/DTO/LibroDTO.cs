@@ -14,5 +14,8 @@ namespace Nexos.Entities.DTO
         public int IdEditorial { get; set; }
         public int IdAutor { get; set; }
 
+        public string? Editorial { get; set; }
+        public string? Autor { get; set; }
+
     }
 }
