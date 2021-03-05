@@ -10,9 +10,9 @@ namespace Nexos.Entities.DTO
         public string Titulo { get; set; }
         public int? Anno { get; set; }
         public string Generon { get; set; }
-        public int? NumeroPagina { get; set; }
-        public int? IdEditorial { get; set; }
-        public int? IdAutor { get; set; }
+        public int NumeroPagina { get; set; }
+        public int IdEditorial { get; set; }
+        public int IdAutor { get; set; }
 
     }
 }

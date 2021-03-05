@@ -10,6 +10,7 @@ namespace Nexos.BusinessRules
         {
             services.AddTransient<IEditorialBusiness, EditorialBusiness>();
             services.AddTransient<IAutorBusiness, AuthorBusiness>();
+            services.AddTransient<ILibrosBusiness, LibrosBusiness>();
 
         }
     }

@@ -88,7 +88,7 @@ namespace Nexos.BusinessRules
                 Id = data.Id,
                 Nombre = data.Nombre,
                 DirecionCorrespondencia = data.DirecionCorrespondencia,
-                Telefono = data.Telefono,
+                Telefono = data.Telefono.ToString(),
                 Correo = data.Correo,
                 LibrosRegistrado = data.LibrosRegistrado
             };

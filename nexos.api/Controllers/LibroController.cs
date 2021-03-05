@@ -1,8 +1,9 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Nexos.Entities.DTO;
+using Nexos.Entities.Interface.BusinessRules;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,36 +13,49 @@ namespace nexos.api.Controllers
     [ApiController]
     public class LibroController : ControllerBase
     {
-        // GET: api/<LibroController>
+        private readonly ILibrosBusiness business;
+        public LibroController(ILibrosBusiness _business)
+        {
+            business = _business;
+        }
+        // GET: api/<EditorialController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var result = await business.GetAll();
+            return StatusCode(result.Code, result);
         }
 
-        // GET api/<LibroController>/5
+        // GET api/<EditorialController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
-            return "value";
+            var result = await business.GetFind(id);
+            return StatusCode(result.Code, result);
         }
 
-        // POST api/<LibroController>
+        // POST api/<AutorController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult> Post([FromBody] LibroDTO data)
         {
+            var result = await business.Create(data);
+            return StatusCode(result.Code, result);
         }
 
-        // PUT api/<LibroController>/5
+        // PUT api/<AutorController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult> Put(int id, [FromBody] LibroDTO data)
         {
+            var result = await business.Update(data);
+            return StatusCode(result.Code, result);
         }
 
-        // DELETE api/<LibroController>/5
+        // DELETE api/<AutorController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
+            var result = await business.delete(id);
+            return StatusCode(result.Code, result);
         }
     }
 }
