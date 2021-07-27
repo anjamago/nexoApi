@@ -7,13 +7,13 @@ namespace Nexos.Entities.Constants
     public static class KeyVault
     {
 
-        public const string SQLServer = ".";
+        public const string SQLServer = "SQLServer";
 
-        public const string SQLUser = "sa";
+        public const string SQLUser = "SQLUser";
 
-        public const string SQLPassword = "@nj1746-";
+        public const string SQLPassword = "SQLPassword";
 
-        public const string SQLDataBase = "APINEXOS";
+        public const string SQLDataBase = "SQLDataBase";
 
     }
 }
